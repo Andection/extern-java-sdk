@@ -23,28 +23,28 @@
 package ru.kontur.extern_api.sdk.utils.builders;
 
 import ru.kontur.extern_api.sdk.ExternEngine;
-import ru.kontur.extern_api.sdk.model.builders.submission.SubmissionDraftsBuilder;
-import ru.kontur.extern_api.sdk.model.builders.submission.SubmissionDraftsBuilderDocument;
-import ru.kontur.extern_api.sdk.model.builders.submission.SubmissionDraftsBuilderDocumentData;
-import ru.kontur.extern_api.sdk.model.builders.submission.SubmissionDraftsBuilderDocumentMetaRequest;
+import ru.kontur.extern_api.sdk.model.builders.fns.inventory.FnsInventoryDraftsBuilder;
+import ru.kontur.extern_api.sdk.model.builders.fns.inventory.FnsInventoryDraftsBuilderDocument;
+import ru.kontur.extern_api.sdk.model.builders.fns.inventory.FnsInventoryDraftsBuilderDocumentData;
+import ru.kontur.extern_api.sdk.model.builders.fns.inventory.FnsInventoryDraftsBuilderDocumentMetaRequest;
 
 public class DraftsBuilderDocumentCreator {
 
-    public SubmissionDraftsBuilderDocument createSubmissionDraftsBuilderDocument(
+    public FnsInventoryDraftsBuilderDocument createFnsInventoryDraftsBuilderDocument(
             ExternEngine engine,
-            SubmissionDraftsBuilder draftsBuilder
+            FnsInventoryDraftsBuilder draftsBuilder
     ) {
         // Пункт требования, подходящий по формату. Он нужен ФНС для понимания того, на какую часть требования пришел документ.
         final String claimItemNumber = "1.01";
 
-        SubmissionDraftsBuilderDocumentMetaRequest meta = new SubmissionDraftsBuilderDocumentMetaRequest();
-        SubmissionDraftsBuilderDocumentData data = new SubmissionDraftsBuilderDocumentData();
+        FnsInventoryDraftsBuilderDocumentMetaRequest meta = new FnsInventoryDraftsBuilderDocumentMetaRequest();
+        FnsInventoryDraftsBuilderDocumentData data = new FnsInventoryDraftsBuilderDocumentData();
         data.setClaimItemNumber(claimItemNumber);
         meta.setBuilderData(data);
 
         return engine
                 .getDraftsBuilderService()
-                .submission()
+                .fnsInventory()
                 .getDocumentService(draftsBuilder.getId())
                 .createAsync(meta)
                 .join();

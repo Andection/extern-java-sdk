@@ -20,12 +20,20 @@
  * SOFTWARE.
  */
 
-package ru.kontur.extern_api.sdk.model.builders;
+package ru.kontur.extern_api.sdk.service.builders.fns.inventory;
 
-import com.google.gson.annotations.SerializedName;
-import ru.kontur.extern_api.sdk.model.Urn;
+import ru.kontur.extern_api.sdk.model.builders.fns.inventory.FnsInventoryDraftsBuilderDocumentFile;
+import ru.kontur.extern_api.sdk.model.builders.fns.inventory.FnsInventoryDraftsBuilderDocumentFileContents;
+import ru.kontur.extern_api.sdk.model.builders.fns.inventory.FnsInventoryDraftsBuilderDocumentFileMeta;
+import ru.kontur.extern_api.sdk.model.builders.fns.inventory.FnsInventoryDraftsBuilderDocumentFileMetaRequest;
+import ru.kontur.extern_api.sdk.service.builders.DraftsBuilderDocumentFileService;
 
-public enum DraftsBuilderType implements Urn<DraftsBuilderType> {
-    @SerializedName("urn:ke.api.public:fns:inventory")
-    FnsInventory
+public interface FnsInventoryDraftsBuilderDocumentFileService extends
+        DraftsBuilderDocumentFileService<
+                FnsInventoryDraftsBuilderDocumentFile,
+                FnsInventoryDraftsBuilderDocumentFileContents,
+                FnsInventoryDraftsBuilderDocumentFileMeta,
+                FnsInventoryDraftsBuilderDocumentFileMetaRequest,
+                FnsInventoryDraftsBuilderDocumentService> {
+
 }
